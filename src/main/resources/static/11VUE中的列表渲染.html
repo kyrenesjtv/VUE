@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    <template  v-for="(item,index) of list "  :key="item.id" > <!-- template 不会被页面渲染，所以是一个很好的包裹 -->
+        <div  > {{index}} ===  {{item.name1}}</div>
+    </template>
+
+
+    <hr/>
+        <div  v-for="(item,key,index) of obj "  > {{item}}=={{key}}=={{index}}</div>
+
+</div>
+
+<script>
+    // 一些数组的api能够引发数组的变量，然后页面也会随之变化 比如pop  push   / 直接改变对象的应用  / Vue.set(app.obj, 索引, 值)
+
+    //增加对象或者更改对象的值  Vue.set(app.obj, 'age', 27)  or app.$set(app.obj, 'age', 27)
+    //    增加多个属性  app.obj = Object.assign({}, app.obj, {
+    //    age: 27,
+    //       favoriteColor: 'Vue Green'
+    //    })
+    var app = new Vue({
+        el : '#app',
+        data : {
+            //循环数组
+           list :[{id:"111",name1:"wang"},{id:"112",name1:"wang2"}],
+            //循环对象
+            obj :{id:100,name:'wang',age:28}
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

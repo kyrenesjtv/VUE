@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    <div>{{fullName1}}</div>
+    <div>{{fullName()}}</div><!-- 使用了methods 也可以达到相同的效果，但是没有缓存，效率会相对低下 -->
+    <div>{{fullname3}}</div>
+</div>
+
+<script>
+    var app = new Vue({
+        el : '#app',
+        data : {
+            fistmessage : 'Albert',
+            lasttmessage : 'Wang',
+            fullname3 : 'Albert Wang'
+        },
+        //监听器 也是具有缓存的效果
+        watch :{
+            fistmessage :function () {
+                this.fullname3 = this.fistmessage + '' +this.lasttmessage;
+          },
+            fistmessage :function () {
+                this.fullname3 = this.fistmessage + '' +this.lasttmessage;
+            }
+        },
+        //方法
+        methods:{
+            fullName : function () {
+                return this.fistmessage + '' + this.lasttmessage;
+            }
+        },
+        //计算属性，有缓存，如果不改变变量的值，不会再重新计算
+        computed :{
+            fullName1 : function () {
+                return this.fistmessage + '' + this.lasttmessage;
+            }
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    <div>{{message}}</div>
+    <div v-text="message + 'W'"></div>  <!-- text  {{}}  html 里面都是可以加语句的。  类似于jquery的$()  然后加东西 -->
+    <div v-html="message"></div>  <!-- 如果message里面有标签的话，html能够解析 text不能解析-->
+</div>
+
+<script>
+    var app = new Vue({
+        el : '#app',
+        data : {
+            message : 'Albert'
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

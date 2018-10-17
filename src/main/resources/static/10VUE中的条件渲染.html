@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    <!--<div v-if="show">{{message}}</div>  &lt;!&ndash;  没有吧div渲染 ,还可以用 show == 1 这种来进行判断 . 这种if else 一定要紧贴&ndash;&gt;-->
+    <!--<div v-else>111</div>-->
+    <!--<div v-show="show">{{message}}</div> &lt;!&ndash; 吧div渲染了,但是隐藏了 &ndash;&gt;-->
+
+    <!--<div v-if="show == 1">{{message}}</div>  &lt;!&ndash;  没有吧div渲染 ,还可以用 show == 1 这种来进行判断&ndash;&gt;-->
+    <!--<div v-else>111</div>-->
+    <div v-if="show">
+        用户名：<input key="username" />  <!-- 加key是为了防止vue 进行复用，确保了唯一性的显示-->
+    </div>
+    <div v-else>
+        邮箱名：<input  key="mailname"/>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el : '#app',
+        data : {
+            show : false,
+            message:'hello world'
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

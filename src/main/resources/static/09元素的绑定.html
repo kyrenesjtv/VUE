@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+    .activated{
+        color:red;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<div id = "app">-->
+    <!--&lt;!&ndash; v-on: 简写 @&ndash;&gt;-->
+    <!--&lt;!&ndash; v-bind: 简写 ：&ndash;&gt;-->
+    <!--<div @click="handleDivClick"-->
+         <!--:class="{activated: isActivated}" -->
+    <!--&gt;-->
+        <!--Hello World</div>-->
+<!--</div>-->
+
+<!--<div id = "app">-->
+    <!--&lt;!&ndash; v-on: 简写 @&ndash;&gt;-->
+    <!--&lt;!&ndash; v-bind: 简写 ：&ndash;&gt;-->
+    <!--<div @click="handleDivClick"-->
+         <!--:class="[activated]"-->
+    <!--&gt;&lt;!&ndash;  数组 里面可以放多个  &ndash;&gt;-->
+        <!--Hello World</div>-->
+<!--</div>-->
+
+
+<div id = "app">
+    <div @click="handleDivClick"
+            :style="styleObj"> <!--:style="styleObj"  可以替换成 :style=[styleObj] 数组,可以挂载多个-->
+        Hello World</div>
+</div>
+
+<!--   一种是对象绑定, 一种是数组绑定。数组可以绑定多个-->
+
+
+<script>
+    <!--第一种-->
+//    var app = new Vue({
+//        el : '#app',
+//        data:{
+//            isActivated :false
+//        },
+//        methods :{
+//            handleDivClick :function () {
+//                this.isActivated=!this.isActivated;
+//            }
+//        }
+//    });
+//    第二种
+//var app = new Vue({
+//    el : '#app',
+//    data:{
+//        activated :''
+//    },
+//    methods :{
+//        handleDivClick :function () {
+//            this.activated=
+//                    this.activated==='activated'?'':'activated';
+//        }
+//    }
+//});
+
+//第三种
+    var app = new Vue({
+        el : '#app',
+        data:{
+            styleObj:{
+             color:'black'
+            }
+        },
+        methods :{
+            handleDivClick :function () {
+                this.styleObj.color=
+                this.styleObj.color==='black'?'red':'black';
+            }
+        }
+    });
+
+
+</script>
+
+
+</body>
+
+</html>

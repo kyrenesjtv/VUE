@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id = "app">
+    {{message}}
+</div>
+
+<script>
+
+    //生命周期函数就是VUE实例在某一个时间点会自动执行的函数
+    var app = new Vue({
+        el : '#app',
+        data: {
+            message :'hello world'
+        },
+        beforeCreate : function () {
+            console.log("beforeCreate");
+        },
+        created :function () {
+            console.log("created");
+        },
+        beforeMount :function () {
+            console.log(this.$el);
+            console.log("beforeMount");
+        },
+        mounted :function () {
+            console.log(this.$el);
+            console.log("mounted");
+        },//执行destroy()执行
+        beforeDestroy :function () {
+            console.log("beforeDestroy");
+        },
+        destroyed :function () {
+            console.log("destroyed");
+        },//数据内容改变时
+        beforeUpdate :function () {
+            console.log("beforeUpdate");
+        },
+        updated :function () {
+            console.log("updated");
+        }
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
