@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--   最开始写法
+<div id = "app">
+    <child @change="handleClick"></child>  组件上出发按钮 一定要配合emit吗？
+</div>
+
+<script>
+
+    //组件的校验
+    Vue.component('child',{
+        template :'<div @click="handleChildClick">Child</div>',
+        methods:{
+            handleChildClick:function () {
+                alert("222");
+                this.$emit("change");
+            }
+        }
+    });
+
+    var app = new Vue({
+        el : '#app',
+        methods :{
+            handleClick:function () {
+                alert("111");
+            }
+        }
+    });
+
+
+
+
+
+</script>-->
+
+
+<!-- 组件绑定原生事件  -->
+
+<div id = "app">
+    <child @click.native="handleClick"></child>  <!-- 通过增加.native  能够绑定value(function name)。 但是key不能自定义了 -->
+</div>
+
+<script>
+
+    //组件的校验
+    Vue.component('child',{
+        template :'<div >Child</div>',
+    });
+
+    var app = new Vue({
+        el : '#app',
+        methods :{
+            handleClick:function () {
+                alert("111");
+            }
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

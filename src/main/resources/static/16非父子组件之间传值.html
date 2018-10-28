@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id = "app">
+    <child content="Albert"></child>
+    <child content="Wang"></child>
+</div>
+
+<script>
+
+    Vue.prototype.bus= new Vue(); //创建的每一个实例都会携带bus属性
+
+    Vue.component('child',{
+        data:function () {
+          return {
+              selfContent : this.content
+          }
+        },
+        props:{
+            content:String
+        },
+        template :'<div @click="handleClick">{{selfContent}}</div>',
+        methods:{
+            handleClick :function () {
+                this.bus.$emit('change',this.selfContent);
+            }
+        },
+        mounted:function () {
+            var this_ = this;
+            this.bus.$on('change',function (msg) {
+                this_.selfContent = msg;
+            })
+        }
+    });
+
+    var app = new Vue({
+        el : '#app',
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

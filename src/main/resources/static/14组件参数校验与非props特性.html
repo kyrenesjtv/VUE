@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id = "app">
+    <child content="hello world" ></child>  <!--  :content 的值是数值类型  。  content是String类型   -->
+</div>
+
+<script>
+
+    //组件的校验
+    Vue.component('child',{
+        props:{
+            //content:String  //约束了，传递进来的content必须是String
+//            content :[String,Number]  // 可以是多个类型
+            content:{
+                type:String,
+//                required:true, //必须传参数
+//                default:'default value' //默认value
+                validator : function (value) {//自定义校验去。 可以触发其他方法 this.$emit ?
+                    return (value.length >5);
+                }
+            }
+        },
+       template: '<div> {{content}}</div>'
+    });
+
+    var app = new Vue({
+        el : '#app',
+    });
+
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
