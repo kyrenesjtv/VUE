@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id = "app">
+    <child-one v-if="type == 'child-one' "></child-one>
+    <child-two v-if="type == 'child-two' "></child-two>
+    <!-- <component :is="type"></component>  动态组件 ==> 根据is 里面的内容来显示不同的组件。 -->
+    <button @click="handleChange">change</button>
+</div>
+
+<script>
+
+    Vue.component('child-one',{
+        template :'<div v-once>childOne</div>'   // v-once 将组件加载到内存中(缓存)，用的时候就拿。  不加的话，当这个组件不用的时候就销毁掉，然后再用的话会在生成，会消耗一定的性能
+    });
+
+    Vue.component('child-two',{
+        template :'<div v-once>childTwo</div>'
+    });
+
+    var app = new Vue({
+        el : '#app',
+        data:{
+          type:"child-one"
+        },
+        methods :{
+            handleChange :function () {
+                this.type = (this.type == 'child-one'? 'child-two':'child-one');
+            }
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
