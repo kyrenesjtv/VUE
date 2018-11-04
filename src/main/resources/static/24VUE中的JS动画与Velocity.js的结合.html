@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../JS/Velocity.js"></script>
+<link rel="stylesheet" href="../css/animate.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+
+<div id = "app">
+    <transition
+            name="fade"
+            @before-enter="handleBeforeEntter"
+            @enter="handleEnter"
+            @after-enter="handleAfterEntter"
+    ><!--  还有leave .  enter 改成leave就行 -->
+        <div v-if="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">切换</button>
+
+</div>
+
+<script>
+
+
+//    var app = new Vue({
+//        el : '#app',
+//        data:{
+//            show:true,
+//        },
+//        methods:{
+//            handleClick:function () {
+//                this.show= !this.show;
+//            },
+//            handleBeforeEntter:function (el) {
+//                //在div显示之前触发
+//            },
+//            handleEnter:function (el,done) {
+//                setTimeout(() => {
+//                    el.style.color = 'green';
+////                    done();
+//                },2000);
+//
+//                setTimeout(() => {
+//                    done(); //动画结束一定要运行done
+//            },4000);
+//            },
+//            handleAfterEntter : function (el) {
+//                el.style.color = 'black';
+//            }
+//        }
+//    });
+
+
+//使用velocity.js动画
+    var app = new Vue({
+        el : '#app',
+        data:{
+            show:true,
+        },
+        methods:{
+            handleClick:function () {
+                this.show= !this.show;
+            },
+            handleBeforeEntter:function (el) {
+                //在div显示之前触发
+                el.style.opacity = 0;  //opacity  透明度
+            },
+            handleEnter:function (el,done) {
+                Velocity(el,{opacity:1},{duration:1000,complete:done});
+            },
+            handleAfterEntter : function (el) {
+                el.style.color='red';
+            }
+        }
+    });
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

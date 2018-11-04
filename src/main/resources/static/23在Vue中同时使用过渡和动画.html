@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="../css/animate.css">
+<style>
+
+    .fade-enter, .fade-leave-to{
+        opacity:0
+    }
+    .fade-enter-active, .fade-leave-active{
+        transition :opacity 3s;
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id = "app">
+    <!-- type="tramsition"    保持动画时间统一 ; :duration="10000"   自定义动画时间  :duration="{enter:5000,leave:10000}" 分别设置时长
+    ； appear  appear-active-class="animated shake"  设置页面初次加载的时候就有动画-->
+    <transition
+                :duration="{enter:5000,leave:10000}"
+                name="fade"
+                appear
+                enter-active-class="animated swing fade-enter-active"
+                leave-active-class="animated bounceInRight fade-leave-active"
+                appear-active-class="animated shake"
+                                >
+        <div v-if="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">切换</button>
+
+</div>
+
+<script>
+
+
+    var app = new Vue({
+        el : '#app',
+        data:{
+            show:true,
+        },
+        methods:{
+            handleClick:function () {
+                this.show= !this.show;
+            }
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="../css/animate.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id = "app">
+
+    <transition  enter-active-class="animated swing"  leave-active-class="animated bounceInRight"> <!-- 自定义class name -->
+        <div v-if="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">切换</button>
+
+</div>
+
+<script>
+
+
+    var app = new Vue({
+        el : '#app',
+        data:{
+            show:true,
+        },
+        methods:{
+            handleClick:function () {
+                this.show= !this.show;
+            }
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
