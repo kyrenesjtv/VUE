@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .fade-enter{
+         opacity:0
+    }
+    .fade-enter-active {
+        transition: opacity 5s;
+    }
+    .fade-leave-active{
+        transition: opacity 5s;
+    }
+    .fade-leave{
+        opacity:0
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id = "app">
+
+    <transition name="fade"> <!-- fade 跟css中挂钩 -->
+        <div v-if="show">hello world</div>
+    </transition>
+
+    <button @click="handleClick">切换</button>
+
+</div>
+
+<script>
+
+
+    var app = new Vue({
+        el : '#app',
+        data:{
+            show:true,
+        },
+        methods:{
+            handleClick:function () {
+                this.show= !this.show;
+            }
+        }
+    });
+
+
+
+
+
+</script>
+
+
+</body>
+
+</html>
