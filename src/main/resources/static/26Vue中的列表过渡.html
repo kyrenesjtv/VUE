@@ -22,7 +22,7 @@
 
 
 <div id = "app">
-    <transition-group name="fade">  <!--  给标签加动画 -->
+    <transition-group name="fade">  <!--  给标签加动画   加了group之后 必须要有key吗？-->
         <div v-for="(item,index) of list" :key="item.id">{{item.title}}</div>
     </transition-group>
     <button @click="handleBtnClick">add</button>
